@@ -44,6 +44,25 @@ public class App {
         System.out.print("Masukkan id untuk di hapus : ");
         int idActivity = input.nextInt();
         activitylist.delete(idActivity);
+      } else if (pilihan == 5) {
+        System.out.print("Masukkan id yang ingin di update : ");
+        int targetIdToUpdate = input.nextInt();
+
+        input.nextLine();
+        Activity activity = new Activity();
+
+        System.out.print("Deskripsi\t: ");
+        activity.description = input.nextLine();
+
+        System.out.print("Nominal\t\t: Rp");
+        activity.nominal = input.nextInt();
+
+        input.nextLine();
+
+        System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
+        activity.type = input.nextInt();
+
+        activitylist.update(targetIdToUpdate, activity);
       }
     }
 
