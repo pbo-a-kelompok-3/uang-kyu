@@ -46,4 +46,10 @@ public class Activitylist {
     this.activities.remove(index);
     return this;
   }
+
+  public Activitylist update(int id, Activity activity) {
+    int index = this.getIndexFromId(id);
+    this.activities.set(index, activity);
+    return this;
+  }
 }
