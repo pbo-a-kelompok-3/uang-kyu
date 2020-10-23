@@ -6,7 +6,15 @@ public class Activitylist {
   public ArrayList<Activity> activities = new ArrayList<Activity>();
   
   public Activitylist insert(Activity activity) {
-    activity.id = this.activities.size();
+    int activitiesLength = this.activities.size();
+    
+    if (activitiesLength != 0) {
+      Activity lastActivity = this.activities.get(this.activities.size() - 1);
+      activity.id = lastActivity.id + 1;
+    } else {
+      activity.id = 0;
+    }
+
     this.activities.add(activity);
     System.out.println("Aktifitas " + activity.description + " berhasil ditambahkan");
     return this;
