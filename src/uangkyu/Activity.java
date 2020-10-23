@@ -10,5 +10,7 @@ public class Activity {
     int CreatedAt;
     int updateAt;
     String type;
+    
+    //NumberFormat formatKurensi = NumberFormat.getCurrencyInstance(LOCALE_FORMAT);
   
 }
