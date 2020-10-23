@@ -5,6 +5,6 @@ public class Activity {
   public int createdAt = 0;
   public int updatedAt = 0;
   public int nominal;
-  public String name;
+  public String description;
   public int type;
 }

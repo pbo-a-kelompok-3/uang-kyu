@@ -26,7 +26,7 @@ public class App {
         Activity activity = new Activity();
 
         System.out.print("Deskripsi\t: ");
-        activity.name = input.nextLine();
+        activity.description = input.nextLine();
 
         System.out.print("Nominal\t\t: Rp");
         activity.nominal = input.nextInt();

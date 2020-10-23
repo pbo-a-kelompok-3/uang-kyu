@@ -7,13 +7,13 @@ public class Activitylist {
   
   public Activitylist insert(Activity activity) {
     this.activities.add(activity);
-    System.out.println("Aktifitas " + activity.name + " berhasil ditambahkan");
+    System.out.println("Aktifitas " + activity.description + " berhasil ditambahkan");
     return this;
   }
 
   public Activitylist getAll() {
     for (Activity activity : activities) {
-      System.out.println(activity.name + "\t" + activity.nominal + "\t" + activity.type);
+      System.out.println(activity.description + "\t" + activity.nominal + "\t" + activity.type);
     }
     return this;
   }
