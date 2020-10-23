@@ -25,15 +25,15 @@ public class App {
         input.nextLine();
         Activity activity = new Activity();
 
-        System.out.print("Nama : ");
+        System.out.print("Deskripsi\t: ");
         activity.name = input.nextLine();
 
-        System.out.print("Nominal : ");
+        System.out.print("Nominal\t\t: Rp");
         activity.nominal = input.nextInt();
 
         input.nextLine();
 
-        System.out.print("Type : ");
+        System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
         activity.type = input.nextLine();
 
         activitylist.insert(activity);
