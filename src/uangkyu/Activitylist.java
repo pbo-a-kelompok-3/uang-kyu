@@ -12,10 +12,30 @@ public class Activitylist {
     return this;
   }
 
+  public int getIndexFromId(int id) {
+    Activity highestId = this.activities.get(this.activities.size() - 1);
+    
+    int index = 0;
+    for (int i = 0; i < highestId.id; i++) {
+      if (i == id) {
+        index = 0;
+        break;
+      }
+    }
+
+    return index;
+  }
+
   public Activitylist getAll() {
     for (Activity activity : activities) {
       System.out.println(activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.type);
     }
+    return this;
+  }
+
+  public Activitylist delete(int id) {
+    int index = this.getIndexFromId(id);
+    this.activities.remove(index);
     return this;
   }
 }
