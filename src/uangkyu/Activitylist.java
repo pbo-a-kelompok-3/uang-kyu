@@ -7,6 +7,7 @@ public class Activitylist {
   
   public Activitylist insert(Activity activity) {
     this.activities.add(activity);
+    System.out.println("Aktifitas " + activity.name + " berhasil ditambahkan");
     return this;
   }
 
