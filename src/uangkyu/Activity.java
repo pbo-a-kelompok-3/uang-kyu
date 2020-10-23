@@ -7,4 +7,8 @@ public class Activity {
   public int nominal;
   public String description;
   public int type;
+
+  public String getTypeAsText() {
+    return type == 1 ? "Pemasukan" : "Pengeluaran";
+  }
 }

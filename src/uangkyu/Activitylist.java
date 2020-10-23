@@ -36,7 +36,7 @@ public class Activitylist {
 
   public Activitylist getAll() {
     for (Activity activity : activities) {
-      System.out.println(activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.type);
+      System.out.println(activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
     }
     return this;
   }
