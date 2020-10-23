@@ -1,10 +1,14 @@
 import java.util.Scanner;
 
+import uangkyu.Activity;
+import uangkyu.Activitylist;
+
 public class App {
   public static void main(String[] args) {
+    Activitylist activitylist = new Activitylist();
     Scanner input = new Scanner(System.in);
-    Integer pilihan = 0;
-
+    int pilihan = 0;
+    
     while (pilihan != 6) {
       System.out.println("UANG KYU");
       System.out.println("1. Masukan aktifitas");
@@ -16,6 +20,26 @@ public class App {
       System.out.println("=====================");
       System.out.print("Masukkan pilihan anda : ");
       pilihan = input.nextInt();
+
+      if (pilihan == 1) {
+        input.nextLine();
+        Activity activity = new Activity();
+
+        System.out.print("Nama : ");
+        activity.name = input.nextLine();
+
+        System.out.print("Nominal : ");
+        activity.nominal = input.nextInt();
+
+        input.nextLine();
+
+        System.out.print("Type : ");
+        activity.type = input.nextLine();
+
+        activitylist.insert(activity);
+      } else if (pilihan == 2) {
+        activitylist.getAll();
+      }
     }
 
     input.close();
