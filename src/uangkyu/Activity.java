@@ -1,16 +1,11 @@
 package uangkyu;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class Activity {
-    int id;
-    String nama;
-    int nominal;
-    int CreatedAt;
-    int updateAt;
-    String type;
-    
-    //NumberFormat formatKurensi = NumberFormat.getCurrencyInstance(LOCALE_FORMAT);
-  
+
+    public static void main(String[] args) {
+
+        int Id,createdAt,updatedAt;
+        String name;
+        String Type;
+    }
 }
