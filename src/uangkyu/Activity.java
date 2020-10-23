@@ -3,7 +3,7 @@ package uangkyu;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class activity {
+public class Activity {
     int id;
     String nama;
     int nominal;
