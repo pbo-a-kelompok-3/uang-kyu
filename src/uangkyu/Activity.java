@@ -6,5 +6,5 @@ public class Activity {
   public int updatedAt = 0;
   public int nominal;
   public String name;
-  public String type;
+  public int type;
 }

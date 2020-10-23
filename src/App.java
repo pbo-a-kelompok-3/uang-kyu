@@ -34,7 +34,7 @@ public class App {
         input.nextLine();
 
         System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-        activity.type = input.nextLine();
+        activity.type = input.nextInt();
 
         activitylist.insert(activity);
       } else if (pilihan == 2) {
