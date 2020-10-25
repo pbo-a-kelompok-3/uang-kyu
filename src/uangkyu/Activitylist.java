@@ -23,16 +23,18 @@ public class Activitylist {
   public int getIndexFromId(int id) {
     if (this.activities.size() < 1)
       return -1;
-
-    Activity highestId = this.activities.get(this.activities.size() - 1);
-
+    
     int index = -1;
-    for (int i = 0; i <= highestId.id; i++) {
-      if (i == id) {
-        index = i;
+    boolean isFound = false;
+    for (Activity activity : activities) {
+      index++;
+
+      if (activity.id == id) {
+        isFound = true;
         break;
       }
     }
+    index = isFound ? index : -1;
 
     return index;
   }
