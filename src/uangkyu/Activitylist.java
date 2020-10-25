@@ -27,7 +27,7 @@ public class Activitylist {
     Activity highestId = this.activities.get(this.activities.size() - 1);
 
     int index = -1;
-    for (int i = 0; i < highestId.id; i++) {
+    for (int i = 0; i <= highestId.id; i++) {
       if (i == id) {
         index = i;
         break;
@@ -51,6 +51,7 @@ public class Activitylist {
       System.out.println("Id : " + id + " tidak ditemukan");
     } else {
       this.activities.remove(index);
+      System.out.println("Id : " + id + " berhasil dihapus !");
     }
     return this;
   }
@@ -61,6 +62,7 @@ public class Activitylist {
       System.out.println("Id : " + id + " tidak ditemukan");
     } else {
       this.activities.set(index, activity);
+      System.out.println("Id : " + id + " berhasil diperbarui");
     }
     return this;
   }
