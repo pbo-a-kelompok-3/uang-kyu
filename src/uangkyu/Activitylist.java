@@ -47,19 +47,21 @@ public class Activitylist {
 
   public Activitylist delete(int id) {
     int index = this.getIndexFromId(id);
-    if (index < 0)
+    if (index < 0) {
       System.out.println("Id : " + id + " tidak ditemukan");
-    else
+    } else {
       this.activities.remove(index);
+    }
     return this;
   }
 
   public Activitylist update(int id, Activity activity) {
     int index = this.getIndexFromId(id);
-    if (index < 0)
+    if (index < 0) {
       System.out.println("Id : " + id + " tidak ditemukan");
-    else
+    } else {
       this.activities.set(index, activity);
+    }
     return this;
   }
 }
