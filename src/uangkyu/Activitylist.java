@@ -47,6 +47,20 @@ public class Activitylist {
     return this;
   }
 
+  public Activitylist get(int id) {
+    int index = this.getIndexFromId(id);
+
+    if (index < 0) {
+      System.out.println("Id : " + id + " tidak ditemukan");
+    } else {
+      Activity activity = this.activities.get(index);
+      System.out.println(
+          activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
+    }
+
+    return this;
+  }
+
   public Activitylist delete(int id) {
     int index = this.getIndexFromId(id);
     if (index < 0) {

@@ -39,6 +39,11 @@ public class App {
         activitylist.insert(activity);
       } else if (pilihan == 2) {
         activitylist.getAll();
+      } else if (pilihan == 3) {
+        input.nextLine();
+        System.out.print("Masukkan id : ");
+        int idActivity = input.nextInt();
+        activitylist.get(idActivity);
       } else if (pilihan == 4) {
         input.nextLine();
         System.out.print("Masukkan id untuk di hapus : ");
