@@ -21,12 +21,15 @@ public class Activitylist {
   }
 
   public int getIndexFromId(int id) {
+    if (this.activities.size() < 1)
+      return -1;
+
     Activity highestId = this.activities.get(this.activities.size() - 1);
-    
-    int index = 0;
+
+    int index = -1;
     for (int i = 0; i < highestId.id; i++) {
       if (i == id) {
-        index = 0;
+        index = i;
         break;
       }
     }
@@ -43,13 +46,15 @@ public class Activitylist {
 
   public Activitylist delete(int id) {
     int index = this.getIndexFromId(id);
-    this.activities.remove(index);
+    if(index < 0) System.out.println("Id : " + id + " tidak ditemukan");
+    else this.activities.remove(index);
     return this;
   }
 
   public Activitylist update(int id, Activity activity) {
     int index = this.getIndexFromId(id);
-    this.activities.set(index, activity);
+    if(index < 0 ) System.out.println("Id : " + id + " tidak ditemukan");
+    else this.activities.set(index, activity);
     return this;
   }
 }
