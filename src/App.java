@@ -45,8 +45,8 @@ public class App {
         case 3:
           input.nextLine();
           System.out.print("Masukkan id : ");
-          int idActivity = input.nextInt();
-          activitylist.get(idActivity);
+          int idActivityToShow = input.nextInt();
+          activitylist.get(idActivityToShow);
           break;
         case 4:
           break;
