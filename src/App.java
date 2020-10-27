@@ -49,6 +49,10 @@ public class App {
           activitylist.get(idActivityToShow);
           break;
         case 4:
+          input.nextLine();
+          System.out.print("Masukkan id untuk di hapus : ");
+          int idActivity = input.nextInt();
+          activitylist.delete(idActivity);
           break;
         case 5:
           break;
@@ -65,10 +69,7 @@ public class App {
       } else if (pilihan == 3) {
         
       } else if (pilihan == 4) {
-        input.nextLine();
-        System.out.print("Masukkan id untuk di hapus : ");
-        int idActivity = input.nextInt();
-        activitylist.delete(idActivity);
+        
       } else if (pilihan == 5) {
         System.out.print("Masukkan id yang ingin di update : ");
         int targetIdToUpdate = input.nextInt();
