@@ -21,6 +21,23 @@ public class App {
       System.out.print("Masukkan pilihan anda : ");
       pilihan = input.nextInt();
 
+      switch (pilihan) {
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+        case 4:
+          break;
+        case 5:
+          break;
+        case 6:
+          break;
+        default:
+          break;
+      }
+
       if (pilihan == 1) {
         input.nextLine();
         Activity activity = new Activity();
