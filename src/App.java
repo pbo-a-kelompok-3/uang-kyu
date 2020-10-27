@@ -25,6 +25,8 @@ public class App {
       switch (pilihan) {
         case 1:
           input.nextLine();
+          System.out.println("TAMBAH AKTIFITAS");
+          System.out.println();
           Activity activity = new Activity();
 
           System.out.print("Deskripsi\t: ");
