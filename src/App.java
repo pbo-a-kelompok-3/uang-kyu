@@ -43,6 +43,7 @@ public class App {
           activitylist.insert(activity);
           break;
         case 2:
+          System.out.println("LIST AKTIFITAS");
           activitylist.getAll();
           break;
         case 3:
