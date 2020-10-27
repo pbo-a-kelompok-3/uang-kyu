@@ -47,11 +47,11 @@ public class Activitylist {
 
   public Activitylist getAll() {
     for (Activity activity : activities) {
-      System.out.println();
+      Activitylist.getLineEquals();
       System.out.println("LIST AKTIFITAS");
       System.out.println(
         activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
-      System.out.println("\n");
+      Activitylist.getLineEquals();
     }
     return this;
   }
