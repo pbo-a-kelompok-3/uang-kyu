@@ -61,6 +61,8 @@ public class App {
           activitylist.delete(idActivity);
           break;
         case 5:
+          System.out.println("UPDATE AKTIFITAS");
+          System.out.println();
           System.out.print("Masukkan id yang ingin di update : ");
           int targetIdToUpdate = input.nextInt();
 
@@ -77,7 +79,8 @@ public class App {
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
           activityToUpdate.type = input.nextInt();
-
+          
+          System.out.println();
           activitylist.update(targetIdToUpdate, activityToUpdate);
           break;
         case 6:
