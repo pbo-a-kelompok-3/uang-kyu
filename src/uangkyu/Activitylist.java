@@ -16,7 +16,9 @@ public class Activitylist {
     }
 
     this.activities.add(activity);
+    System.out.println();
     System.out.println("Aktifitas " + activity.description + " berhasil ditambahkan");
+    System.out.println();
     return this;
   }
 
