@@ -48,7 +48,8 @@ public class App {
           break;
         case 3:
           input.nextLine();
-          System.out.print("Masukkan id : ");
+          System.out.println("CARI AKTIFITAS");
+          System.out.print("Masukkan id untuk dicari: ");
           int idActivityToShow = input.nextInt();
           activitylist.get(idActivityToShow);
           break;
