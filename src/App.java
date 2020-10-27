@@ -8,7 +8,7 @@ public class App {
     Activitylist activitylist = new Activitylist();
     Scanner input = new Scanner(System.in);
     int pilihan = 0;
-    
+
     while (pilihan != 6) {
       System.out.println("UANG KYU");
       System.out.println("1. Masukan aktifitas");
@@ -43,12 +43,12 @@ public class App {
           activitylist.getAll();
           break;
         case 3:
-          Activitylist.getLineEquals();
+          App.getEqualLine();
           input.nextLine();
           System.out.print("Masukkan id : ");
           int idActivityToShow = input.nextInt();
           activitylist.get(idActivityToShow);
-          Activitylist.getLineEquals();
+          App.getEqualLine();
           break;
         case 4:
           input.nextLine();
@@ -84,5 +84,9 @@ public class App {
     }
 
     input.close();
+  }
+
+  public static void getEqualLine() {
+    System.out.println("====================================");
   }
 }
