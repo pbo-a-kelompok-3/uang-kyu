@@ -43,6 +43,10 @@ public class App {
           activitylist.getAll();
           break;
         case 3:
+          input.nextLine();
+          System.out.print("Masukkan id : ");
+          int idActivity = input.nextInt();
+          activitylist.get(idActivity);
           break;
         case 4:
           break;
@@ -59,10 +63,7 @@ public class App {
       } else if (pilihan == 2) {
         
       } else if (pilihan == 3) {
-        input.nextLine();
-        System.out.print("Masukkan id : ");
-        int idActivity = input.nextInt();
-        activitylist.get(idActivity);
+        
       } else if (pilihan == 4) {
         input.nextLine();
         System.out.print("Masukkan id untuk di hapus : ");
