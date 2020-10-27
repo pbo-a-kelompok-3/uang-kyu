@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Activitylist {
   public ArrayList<Activity> activities = new ArrayList<Activity>();
 
+  public static void getLineEquals() {
+    System.out.println("====================================");
+  }
+
   public Activitylist insert(Activity activity) {
     int activitiesLength = this.activities.size();
 
@@ -16,9 +20,9 @@ public class Activitylist {
     }
 
     this.activities.add(activity);
-    System.out.println();
+    Activitylist.getLineEquals();
     System.out.println("Aktifitas " + activity.description + " berhasil ditambahkan");
-    System.out.println();
+    Activitylist.getLineEquals();
     return this;
   }
 
