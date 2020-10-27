@@ -55,7 +55,8 @@ public class App {
           break;
         case 4:
           input.nextLine();
-          System.out.print("Masukkan id untuk di hapus : ");
+          System.out.println("HAPUS AKTIFITAS");
+          System.out.print("Masukkan id untuk dihapus : ");
           int idActivity = input.nextInt();
           activitylist.delete(idActivity);
           break;
