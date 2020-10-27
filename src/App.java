@@ -43,10 +43,12 @@ public class App {
           activitylist.getAll();
           break;
         case 3:
+          Activitylist.getLineEquals();
           input.nextLine();
           System.out.print("Masukkan id : ");
           int idActivityToShow = input.nextInt();
           activitylist.get(idActivityToShow);
+          Activitylist.getLineEquals();
           break;
         case 4:
           input.nextLine();

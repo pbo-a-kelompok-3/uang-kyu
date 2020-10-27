@@ -57,6 +57,7 @@ public class Activitylist {
   }
 
   public Activitylist get(int id) {
+    System.out.println();
     int index = this.getIndexFromId(id);
 
     if (index < 0) {
@@ -66,7 +67,6 @@ public class Activitylist {
       System.out.println(
           activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
     }
-
     return this;
   }
 
