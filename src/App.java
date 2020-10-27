@@ -23,6 +23,21 @@ public class App {
 
       switch (pilihan) {
         case 1:
+          input.nextLine();
+          Activity activity = new Activity();
+
+          System.out.print("Deskripsi\t: ");
+          activity.description = input.nextLine();
+
+          System.out.print("Nominal\t\t: Rp");
+          activity.nominal = input.nextInt();
+
+          input.nextLine();
+
+          System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
+          activity.type = input.nextInt();
+
+          activitylist.insert(activity);
           break;
         case 2:
           break;
@@ -39,21 +54,7 @@ public class App {
       }
 
       if (pilihan == 1) {
-        input.nextLine();
-        Activity activity = new Activity();
-
-        System.out.print("Deskripsi\t: ");
-        activity.description = input.nextLine();
-
-        System.out.print("Nominal\t\t: Rp");
-        activity.nominal = input.nextInt();
-
-        input.nextLine();
-
-        System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-        activity.type = input.nextInt();
-
-        activitylist.insert(activity);
+        
       } else if (pilihan == 2) {
         activitylist.getAll();
       } else if (pilihan == 3) {
