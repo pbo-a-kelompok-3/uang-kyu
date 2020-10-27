@@ -79,18 +79,6 @@ public class App {
         default:
           break;
       }
-
-      if (pilihan == 1) {
-        
-      } else if (pilihan == 2) {
-        
-      } else if (pilihan == 3) {
-        
-      } else if (pilihan == 4) {
-        
-      } else if (pilihan == 5) {
-        
-      }
     }
 
     input.close();
