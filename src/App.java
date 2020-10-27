@@ -21,6 +21,7 @@ public class App {
       System.out.print("Masukkan pilihan anda : ");
       pilihan = input.nextInt();
 
+      App.getEqualLine();
       switch (pilihan) {
         case 1:
           input.nextLine();
@@ -43,12 +44,10 @@ public class App {
           activitylist.getAll();
           break;
         case 3:
-          App.getEqualLine();
           input.nextLine();
           System.out.print("Masukkan id : ");
           int idActivityToShow = input.nextInt();
           activitylist.get(idActivityToShow);
-          App.getEqualLine();
           break;
         case 4:
           input.nextLine();
@@ -81,6 +80,7 @@ public class App {
         default:
           break;
       }
+      App.getEqualLine();
     }
 
     input.close();
