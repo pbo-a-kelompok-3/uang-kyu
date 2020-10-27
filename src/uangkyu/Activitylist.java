@@ -16,6 +16,7 @@ public class Activitylist {
     }
 
     this.activities.add(activity);
+    System.out.println();
     System.out.println("Aktifitas " + activity.description + " berhasil ditambahkan");
     return this;
   }
@@ -42,12 +43,13 @@ public class Activitylist {
   public Activitylist getAll() {
     for (Activity activity : activities) {
       System.out.println(
-          activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
+        activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
     }
     return this;
   }
 
   public Activitylist get(int id) {
+    System.out.println();
     int index = this.getIndexFromId(id);
 
     if (index < 0) {
@@ -57,7 +59,6 @@ public class Activitylist {
       System.out.println(
           activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
     }
-
     return this;
   }
 

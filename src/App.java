@@ -8,7 +8,7 @@ public class App {
     Activitylist activitylist = new Activitylist();
     Scanner input = new Scanner(System.in);
     int pilihan = 0;
-    
+
     while (pilihan != 6) {
       System.out.println("UANG KYU");
       System.out.println("1. Masukan aktifitas");
@@ -21,9 +21,12 @@ public class App {
       System.out.print("Masukkan pilihan anda : ");
       pilihan = input.nextInt();
 
+      App.getEqualLine();
       switch (pilihan) {
         case 1:
           input.nextLine();
+          System.out.println("TAMBAH AKTIFITAS");
+          System.out.println();
           Activity activity = new Activity();
 
           System.out.print("Deskripsi\t: ");
@@ -40,21 +43,26 @@ public class App {
           activitylist.insert(activity);
           break;
         case 2:
+          System.out.println("LIST AKTIFITAS");
           activitylist.getAll();
           break;
         case 3:
           input.nextLine();
-          System.out.print("Masukkan id : ");
+          System.out.println("CARI AKTIFITAS");
+          System.out.print("Masukkan id untuk dicari: ");
           int idActivityToShow = input.nextInt();
           activitylist.get(idActivityToShow);
           break;
         case 4:
           input.nextLine();
-          System.out.print("Masukkan id untuk di hapus : ");
+          System.out.println("HAPUS AKTIFITAS");
+          System.out.print("Masukkan id untuk dihapus : ");
           int idActivity = input.nextInt();
           activitylist.delete(idActivity);
           break;
         case 5:
+          System.out.println("UPDATE AKTIFITAS");
+          System.out.println();
           System.out.print("Masukkan id yang ingin di update : ");
           int targetIdToUpdate = input.nextInt();
 
@@ -71,7 +79,8 @@ public class App {
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
           activityToUpdate.type = input.nextInt();
-
+          
+          System.out.println();
           activitylist.update(targetIdToUpdate, activityToUpdate);
           break;
         case 6:
@@ -79,8 +88,13 @@ public class App {
         default:
           break;
       }
+      App.getEqualLine();
     }
 
     input.close();
+  }
+
+  public static void getEqualLine() {
+    System.out.println("====================================");
   }
 }
