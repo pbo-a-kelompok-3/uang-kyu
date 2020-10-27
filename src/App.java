@@ -40,6 +40,7 @@ public class App {
           activitylist.insert(activity);
           break;
         case 2:
+          activitylist.getAll();
           break;
         case 3:
           break;
@@ -56,7 +57,7 @@ public class App {
       if (pilihan == 1) {
         
       } else if (pilihan == 2) {
-        activitylist.getAll();
+        
       } else if (pilihan == 3) {
         input.nextLine();
         System.out.print("Masukkan id : ");
