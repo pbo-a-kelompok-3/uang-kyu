@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.io.Console;
 
 import uangkyu.Activity;
 import uangkyu.Activitylist;
@@ -6,7 +6,7 @@ import uangkyu.Activitylist;
 public class App {
   public static void main(String[] args) {
     Activitylist activitylist = new Activitylist();
-    Scanner input = new Scanner(System.in);
+    Console input = System.console();
     int pilihan = 0;
 
     while (pilihan != 6) {
@@ -24,18 +24,15 @@ public class App {
       App.getEqualLine();
       switch (pilihan) {
         case 1:
-          input.nextLine();
           System.out.println("TAMBAH AKTIFITAS");
           System.out.println();
           Activity activity = new Activity();
 
           System.out.print("Deskripsi\t: ");
-          activity.description = input.nextLine();
+          activity.description = input.readLine();
 
-          System.out.print("Nominal\t\t: Rp");
-          activity.nominal = input.nextInt();
-
-          input.nextLine();
+          System.out.print("Nominal\t\t: Rp ");
+         activity.description = input.readLine();
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
           activity.type = input.nextInt();
@@ -47,17 +44,15 @@ public class App {
           activitylist.getAll();
           break;
         case 3:
-          input.nextLine();
           System.out.println("CARI AKTIFITAS");
           System.out.print("Masukkan id untuk dicari: ");
-          int idActivityToShow = input.nextInt();
+          int idActivityToShow = Integer.parseInt(input.readLine());
           activitylist.get(idActivityToShow);
           break;
         case 4:
-          input.nextLine();
           System.out.println("HAPUS AKTIFITAS");
           System.out.print("Masukkan id untuk dihapus : ");
-          int idActivity = input.nextInt();
+          int idActivity = Integer.parseInt(input.readLine());
           activitylist.delete(idActivity);
           break;
         case 5:
@@ -66,14 +61,13 @@ public class App {
           System.out.print("Masukkan id yang ingin di update : ");
           int targetIdToUpdate = input.nextInt();
 
-          input.nextLine();
           Activity activityToUpdate = new Activity();
 
           System.out.print("Deskripsi\t: ");
-          activityToUpdate.description = input.nextLine();
+          activityToUpdate.description = input.readLine();
 
-          System.out.print("Nominal\t\t: Rp");
-          activityToUpdate.nominal = input.nextInt();
+          System.out.print("Nominal\t\t: Rp ");
+          activityToUpdate.nominal = Integer.parseInt(input.readLine());
 
           input.nextLine();
 
@@ -91,7 +85,7 @@ public class App {
       App.getEqualLine();
     }
 
-    input.close();
+    input.readLine();
   }
 
   public static void getEqualLine() {
