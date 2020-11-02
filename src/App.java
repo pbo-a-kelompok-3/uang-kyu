@@ -3,9 +3,9 @@ import java.util.Scanner;
 import uangkyu.Activity;
 import uangkyu.Activitylist;
 
-public class App {
+public class App extends Activitylist {
   public static void main(String[] args) {
-    Activitylist activitylist = new Activitylist();
+    App activitylist = new App();
     Scanner input = new Scanner(System.in);
     int pilihan = 0;
 
