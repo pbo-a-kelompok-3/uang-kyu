@@ -78,6 +78,7 @@ public class Activitylist {
     if (index < 0) {
       System.out.println("Id : " + id + " tidak ditemukan");
     } else {
+      activity.id = id;
       this.activities.set(index, activity);
       System.out.println("Id : " + id + " berhasil diperbarui");
     }
