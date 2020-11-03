@@ -10,14 +10,14 @@ public class ActivityList {
 
     if (activitiesLength != 0) {
       Activity lastActivity = this.activities.get(this.activities.size() - 1);
-      activity.id = lastActivity.id + 1;
+      activity.setId(lastActivity.id + 1);
     } else {
-      activity.id = 0;
+      activity.setId(0);
     }
 
     this.activities.add(activity);
     System.out.println();
-    System.out.println("Aktifitas " + activity.description + " berhasil ditambahkan");
+    System.out.println("Aktifitas " + activity.getDescription() + " berhasil ditambahkan");
     return this;
   }
 
