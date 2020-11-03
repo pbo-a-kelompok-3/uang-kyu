@@ -36,8 +36,9 @@ public class App extends Activitylist {
           int nominal = Integer.parseInt(input.readLine());
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          String type = input.readLine();
+          int type = Integer.parseInt(input.readLine());
 
+          activity.setDescription(description).setNominal(nominal).setType(type);
           activitylist.insert(activity);
           break;
         case 2:
