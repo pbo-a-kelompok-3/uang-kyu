@@ -11,4 +11,28 @@ public class Activity {
   public String getTypeAsText() {
     return type == 1 ? "Pemasukan" : "Pengeluaran";
   }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setCreatedAt(int createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public void setUpdatedAt(int updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  public void setNominal(int nominal) {
+    this.nominal = nominal;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setType(int type) {
+    this.type = type;
+  }
 }
