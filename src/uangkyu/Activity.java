@@ -35,4 +35,28 @@ public class Activity {
   public void setType(int type) {
     this.type = type;
   }
+
+  public int getId() {
+    return id;
+  }
+
+  public int getCreatedAt() {
+    return createdAt;
+  }
+
+  public int getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public int getNominal() {
+    return nominal;
+  }
+
+  public int getType() {
+    return type;
+  }
 }
