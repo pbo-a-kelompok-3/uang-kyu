@@ -1,9 +1,9 @@
 import java.io.Console;
 
 import uangkyu.Activity;
-import uangkyu.Activitylist;
+import uangkyu.ActivityList;
 
-public class App extends Activitylist {
+public class App extends ActivityList {
   public static void main(String[] args) {
     App activitylist = new App();
     Console input = System.console();
@@ -30,15 +30,15 @@ public class App extends Activitylist {
           Activity activity = new Activity();
 
           System.out.print("Deskripsi\t: ");
-          activity.description = input.readLine();
+          String description = input.readLine();
 
           System.out.print("Nominal\t\t: Rp");
-          activity.nominal = Integer.parseInt(input.readLine());
-
+          int nominal = Integer.parseInt(input.readLine());
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          activity.description = input.readLine();
+          int type = Integer.parseInt(input.readLine());
 
+          activity.setDescription(description).setNominal(nominal).setType(type);
           activitylist.insert(activity);
           break;
         case 2:
@@ -66,16 +66,19 @@ public class App extends Activitylist {
           Activity activityToUpdate = new Activity();
 
           System.out.print("Deskripsi\t: ");
-          activityToUpdate.description = input.readLine();
+          String descriptionToUpdate = input.readLine();
 
           System.out.print("Nominal\t\t: Rp");
-          activityToUpdate.nominal = Integer.parseInt(input.readLine());
-
+          int nominalToUpdate = Integer.parseInt(input.readLine());
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          activityToUpdate.type = Integer.parseInt(input.readLine());
+          int typeToUpdate = Integer.parseInt(input.readLine());
           
           System.out.println();
+          activityToUpdate
+            .setDescription(descriptionToUpdate)
+            .setNominal(nominalToUpdate)
+            .setType(typeToUpdate);
           activitylist.update(targetIdToUpdate, activityToUpdate);
           break;
         case 6:
