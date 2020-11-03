@@ -66,16 +66,19 @@ public class App extends ActivityList {
           Activity activityToUpdate = new Activity();
 
           System.out.print("Deskripsi\t: ");
-          activityToUpdate.description = input.readLine();
+          String descriptionToUpdate = input.readLine();
 
           System.out.print("Nominal\t\t: Rp");
-          activityToUpdate.nominal = Integer.parseInt(input.readLine());
-
+          int nominalToUpdate = Integer.parseInt(input.readLine());
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          activityToUpdate.type = Integer.parseInt(input.readLine());
+          int typeToUpdate = Integer.parseInt(input.readLine());
           
           System.out.println();
+          activityToUpdate
+            .setDescription(descriptionToUpdate)
+            .setNominal(nominalToUpdate)
+            .setType(typeToUpdate);
           activitylist.update(targetIdToUpdate, activityToUpdate);
           break;
         case 6:
