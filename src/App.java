@@ -30,14 +30,13 @@ public class App extends Activitylist {
           Activity activity = new Activity();
 
           System.out.print("Deskripsi\t: ");
-          activity.description = input.readLine();
+          String description = input.readLine();
 
           System.out.print("Nominal\t\t: Rp");
-          activity.nominal = Integer.parseInt(input.readLine());
-
+          int nominal = Integer.parseInt(input.readLine());
 
           System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          activity.description = input.readLine();
+          String type = input.readLine();
 
           activitylist.insert(activity);
           break;
