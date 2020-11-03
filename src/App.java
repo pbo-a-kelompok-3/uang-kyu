@@ -1,9 +1,9 @@
 import java.io.Console;
 
 import uangkyu.Activity;
-import uangkyu.Activitylist;
+import uangkyu.ActivityList;
 
-public class App extends Activitylist {
+public class App extends ActivityList {
   public static void main(String[] args) {
     App activitylist = new App();
     Console input = System.console();
