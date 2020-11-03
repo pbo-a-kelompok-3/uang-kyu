@@ -12,28 +12,34 @@ public class Activity {
     return type == 1 ? "Pemasukan" : "Pengeluaran";
   }
 
-  public void setId(int id) {
+  public Activity Id(int id) {
     this.id = id;
+    return this;
   }
 
-  public void setCreatedAt(int createdAt) {
+  public Activity CreatedAt(int createdAt) {
     this.createdAt = createdAt;
+    return this;
   }
 
-  public void setUpdatedAt(int updatedAt) {
+  public Activity UpdatedAt(int updatedAt) {
     this.updatedAt = updatedAt;
+    return this;
   }
 
-  public void setNominal(int nominal) {
+  public Activity Nominal(int nominal) {
     this.nominal = nominal;
+    return this;
   }
 
-  public void setDescription(String description) {
+  public Activity Description(String description) {
     this.description = description;
+    return this;
   }
 
-  public void setType(int type) {
+  public Activity Type(int type) {
     this.type = type;
+    return this;
   }
 
   public int getId() {
