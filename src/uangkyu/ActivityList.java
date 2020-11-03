@@ -10,7 +10,7 @@ public class ActivityList {
 
     if (activitiesLength != 0) {
       Activity lastActivity = this.activities.get(this.activities.size() - 1);
-      activity.setId(lastActivity.id + 1);
+      activity.setId(lastActivity.getId() + 1);
     } else {
       activity.setId(0);
     }
@@ -30,7 +30,7 @@ public class ActivityList {
     for (Activity activity : activities) {
       index++;
 
-      if (activity.id == id) {
+      if (activity.getId() == id) {
         isFound = true;
         break;
       }
@@ -78,7 +78,7 @@ public class ActivityList {
     if (index < 0) {
       System.out.println("Id : " + id + " tidak ditemukan");
     } else {
-      activity.id = id;
+      activity.setId(id);
       this.activities.set(index, activity);
       System.out.println("Id : " + id + " berhasil diperbarui");
     }
