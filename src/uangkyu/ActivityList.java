@@ -57,7 +57,7 @@ public class ActivityList {
     } else {
       Activity activity = this.activities.get(index);
       System.out.println(
-          activity.id + "\t" + activity.description + "\t" + activity.nominal + "\t" + activity.getTypeAsText());
+          activity.getId() + "\t" + activity.getDescription() + "\t" + activity.getNominal() + "\t" + activity.getTypeAsText());
     }
     return this;
   }
