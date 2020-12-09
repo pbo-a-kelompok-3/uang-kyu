@@ -19,7 +19,12 @@ public class App extends ActivityList {
       System.out.println("6. Keluar program");
       System.out.println("=====================");
       System.out.print("Masukkan pilihan anda : ");
-      pilihan = Integer.parseInt(input.readLine());
+      try {
+        pilihan = Integer.parseInt(input.readLine());
+      } catch (Exception err) {
+        pilihan = 0;
+        App.errorHandling(err, "Input yang anda masukan bukan berupa angka");
+      }
 
       App.getEqualLine();
       switch (pilihan) {
@@ -85,8 +90,7 @@ public class App extends ActivityList {
             .setType(typeToUpdate);
           activitylist.update(targetIdToUpdate, activityToUpdate);
           break;
-        default:
-          pilihan = 6;
+        case 6:
           System.out.println("Keluar dari program...");
           break;
       }
