@@ -56,39 +56,52 @@ public class App extends ActivityList {
           break;
         case 3:
           System.out.println("CARI AKTIFITAS");
-          System.out.print("Masukkan id untuk dicari: ");
-          int idActivityToShow = Integer.parseInt(input.readLine());
-          activitylist.get(idActivityToShow);
+          try {
+            System.out.print("Masukkan id untuk dicari: ");
+            int idActivityToShow = Integer.parseInt(input.readLine());
+            activitylist.get(idActivityToShow);
+          } catch (Exception err) {
+            App.errorHandling(err, "Format ID yang anda masukkan salah");
+          }
           break;
         case 4:
           System.out.println("HAPUS AKTIFITAS");
-          System.out.print("Masukkan id untuk dihapus : ");
-          int idActivity = Integer.parseInt(input.readLine());
-          activitylist.delete(idActivity);
+          try{
+            System.out.print("Masukkan id untuk dihapus : ");
+            int idActivity = Integer.parseInt(input.readLine());
+            activitylist.delete(idActivity);
+          }catch (Exception err) {
+            App.errorHandling(err, "Format ID yang anda masukkan salah");
+          }
           break;
         case 5:
           System.out.println("UPDATE AKTIFITAS");
           System.out.println();
-          System.out.print("Masukkan id yang ingin di update : ");
-          int targetIdToUpdate = Integer.parseInt(input.readLine());
+          try{
+            System.out.print("Masukkan id yang ingin di update : ");
+            int targetIdToUpdate = Integer.parseInt(input.readLine());
 
-          Activity activityToUpdate = new Activity();
+            Activity activityToUpdate = new Activity();
 
-          System.out.print("Deskripsi\t: ");
-          String descriptionToUpdate = input.readLine();
+            System.out.print("Deskripsi\t: ");
+            String descriptionToUpdate = input.readLine();
 
-          System.out.print("Nominal\t\t: Rp");
-          int nominalToUpdate = Integer.parseInt(input.readLine());
+            System.out.print("Nominal\t\t: Rp");
+            int nominalToUpdate = Integer.parseInt(input.readLine());
 
-          System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          int typeToUpdate = Integer.parseInt(input.readLine());
-          
-          System.out.println();
-          activityToUpdate
-            .setDescription(descriptionToUpdate)
-            .setNominal(nominalToUpdate)
-            .setType(typeToUpdate);
-          activitylist.update(targetIdToUpdate, activityToUpdate);
+            System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
+            int typeToUpdate = Integer.parseInt(input.readLine());
+            
+            System.out.println();
+            activityToUpdate
+              .setDescription(descriptionToUpdate)
+              .setNominal(nominalToUpdate)
+              .setType(typeToUpdate);
+            activitylist.update(targetIdToUpdate, activityToUpdate);
+          }
+          catch (Exception err) {
+            App.errorHandling(err, "Format Inputan yang anda masukkan salah yang anda masukkan salah");
+          }
           break;
         case 6:
           System.out.println("Keluar dari program...");
