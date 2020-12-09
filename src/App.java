@@ -81,15 +81,13 @@ public class App extends ActivityList {
             .setType(typeToUpdate);
           activitylist.update(targetIdToUpdate, activityToUpdate);
           break;
-        case 6:
-          break;
         default:
+          pilihan = 6;
+          System.out.println("Keluar dari program...");
           break;
       }
       App.getEqualLine();
     }
-
-    input.readLine();
   }
 
   public static void getEqualLine() {
