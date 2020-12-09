@@ -29,17 +29,21 @@ public class App extends ActivityList {
           System.out.println();
           Activity activity = new Activity();
 
-          System.out.print("Deskripsi\t: ");
-          String description = input.readLine();
+          try{
+            System.out.print("Deskripsi\t: ");
+            String description = input.readLine();
+  
+            System.out.print("Nominal\t\t: Rp");
+            int nominal = Integer.parseInt(input.readLine());
+  
+            System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
+            int type = Integer.parseInt(input.readLine());
+            activity.setDescription(description).setNominal(nominal).setType(type);
+            activitylist.insert(activity);
+          } catch (Exception err) {
+            App.errorHandling(err, "Input yang anda masukan bukan berupa angka");
+          }
 
-          System.out.print("Nominal\t\t: Rp");
-          int nominal = Integer.parseInt(input.readLine());
-
-          System.out.print("Type\n(1: Pemasukan/2: Pengeluaran)\t: ");
-          int type = Integer.parseInt(input.readLine());
-
-          activity.setDescription(description).setNominal(nominal).setType(type);
-          activitylist.insert(activity);
           break;
         case 2:
           System.out.println("LIST AKTIFITAS");
@@ -92,5 +96,12 @@ public class App extends ActivityList {
 
   public static void getEqualLine() {
     System.out.println("====================================");
+  }
+
+  public static void errorHandling(Exception err, String message) {
+    App.getEqualLine();
+    System.out.println("Oppss sesuatu tidak beres...");
+    System.out.println("MESSAGE => " + message);
+    System.out.println("ERROR => " + err);
   }
 }
