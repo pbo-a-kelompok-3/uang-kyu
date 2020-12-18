@@ -6,6 +6,11 @@
 package gui;
 
 import java.awt.Color;
+import uangkyu.Activity;
+import uangkyu.ActivityList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
 
 /**
  *
@@ -23,10 +28,17 @@ public class Dashboard extends javax.swing.JFrame {
         this.activityTable.getTableHeader().setForeground(Color.white);
         
         this.incomeRadioButton.setSelected(true);
+        this.incomeRadioButton.setActionCommand("1");
+        this.outcomeRadioButton.setActionCommand("0");
         this.buttonGroup1.add(incomeRadioButton);
         this.buttonGroup1.add(outcomeRadioButton);
     }
 
+    public void resetForm() {
+        this.inputName.setText("");
+        this.inputNominal.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +82,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         addActivityButton.setBackground(new java.awt.Color(255, 255, 255));
         addActivityButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addActivityButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addActivityButtonMouseClicked(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(21, 132, 103));
         jLabel1.setText("Tambah Aktifitas");
@@ -169,10 +186,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         activityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Tanggal", "Aktifitas", "Type", "Nominal"
@@ -287,6 +301,36 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_incomeRadioButtonActionPerformed
 
+    private void addActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addActivityButtonMouseClicked
+        try {
+            String name = this.inputName.getText();
+            int nominal = Integer.parseInt(this.inputNominal.getText());
+            int type = Integer.parseInt(this.buttonGroup1.getSelection().getActionCommand());
+
+            Activity activity = new Activity();
+            activity
+                .setNominal(nominal)
+                .setDescription(name)
+                .setType(type);
+        
+            this.activityList.insert(activity);
+            
+            String typeText = Activity.convertTypeToText(type);
+            
+            Object data[] = {0, name, typeText, nominal};
+            DefaultTableModel tableModel = (DefaultTableModel) this.activityTable.getModel();
+            tableModel.addRow(data);
+            
+            this.resetForm();
+            
+            this.incomeNominal.setText(String.valueOf(activityList.getTotalNominal()[1]));
+            this.outcomeNominal.setText(String.valueOf(activityList.getTotalNominal()[0]));
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Silahkan isi form dengan benar");
+        }
+        
+    }//GEN-LAST:event_addActivityButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -321,6 +365,8 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
     }
+    
+    private ActivityList activityList = new ActivityList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable activityTable;
