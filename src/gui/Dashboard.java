@@ -212,6 +212,11 @@ public class Dashboard extends javax.swing.JFrame {
         activityTable.setRowHeight(32);
         activityTable.setSelectionBackground(new java.awt.Color(21, 132, 103));
         activityTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        activityTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                activityTableMouseClicked(evt);
+            }
+        });
         activityTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 activityTablePropertyChange(evt);
@@ -330,6 +335,13 @@ public class Dashboard extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_addActivityButtonMouseClicked
+
+    private void activityTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_activityTableMouseClicked
+        int selectedRow = this.activityTable.getSelectedRow();
+        Activity activity = this.activityList.activities.get(selectedRow);
+        Modal modal = new Modal(activity);
+        modal.setVisible(true);
+    }//GEN-LAST:event_activityTableMouseClicked
 
     /**
      * @param args the command line arguments
