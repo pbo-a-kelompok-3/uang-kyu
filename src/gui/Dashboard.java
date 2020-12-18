@@ -338,11 +338,20 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void activityTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_activityTableMouseClicked
         int selectedRow = this.activityTable.getSelectedRow();
-        Activity activity = this.activityList.activities.get(selectedRow);
-        Modal modal = new Modal(activity);
+        Modal modal = new Modal(selectedRow, this);
         modal.setVisible(true);
     }//GEN-LAST:event_activityTableMouseClicked
 
+    public void deleteRow(int index) {
+        DefaultTableModel tableModel = (DefaultTableModel) this.activityTable.getModel();
+        tableModel.removeRow(index);
+    }
+    
+    public void refreshNominal() {
+        this.incomeNominal.setText(String.valueOf(activityList.getTotalNominal()[1]));
+        this.outcomeNominal.setText(String.valueOf(activityList.getTotalNominal()[0]));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -378,7 +387,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
     }
     
-    private ActivityList activityList = new ActivityList();
+    public ActivityList activityList = new ActivityList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable activityTable;

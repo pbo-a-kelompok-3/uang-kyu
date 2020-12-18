@@ -167,7 +167,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="addActivityButton2" max="32767" attributes="0"/>
+                                  <Component id="deleteActivityButton" max="32767" attributes="0"/>
                                   <Component id="addActivityButton" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -186,7 +186,7 @@
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="addActivityButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="addActivityButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="deleteActivityButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -245,7 +245,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="addActivityButton2">
+            <Container class="javax.swing.JPanel" name="deleteActivityButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="54" green="54" red="f0" type="rgb"/>
@@ -255,7 +255,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addActivityButton2MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteActivityButtonMouseClicked"/>
               </Events>
 
               <Layout>

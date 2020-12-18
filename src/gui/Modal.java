@@ -15,10 +15,12 @@ public class Modal extends javax.swing.JFrame {
     /**
      * Creates new form Modal
      */
-    public Modal(Activity activity) {
+    public Modal(int index, Dashboard dashboard) {
         initComponents();
-        this.inputName.setText(activity.getDescription());
-        this.inputNominal.setText(String.valueOf(activity.getNominal()));
+        this.inputName.setText(dashboard.activityList.activities.get(index).getDescription());
+        this.inputNominal.setText(String.valueOf(dashboard.activityList.activities.get(index).getNominal()));
+        this.dashboard = dashboard;
+        this.indexRow = index;
     }
 
     /**
@@ -40,7 +42,7 @@ public class Modal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         addActivityButton = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        addActivityButton2 = new javax.swing.JPanel();
+        deleteActivityButton = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -110,33 +112,33 @@ public class Modal extends javax.swing.JFrame {
                     .addGap(0, 12, Short.MAX_VALUE)))
         );
 
-        addActivityButton2.setBackground(new java.awt.Color(240, 84, 84));
-        addActivityButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        addActivityButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        deleteActivityButton.setBackground(new java.awt.Color(240, 84, 84));
+        deleteActivityButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteActivityButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addActivityButton2MouseClicked(evt);
+                deleteActivityButtonMouseClicked(evt);
             }
         });
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Hapus");
 
-        javax.swing.GroupLayout addActivityButton2Layout = new javax.swing.GroupLayout(addActivityButton2);
-        addActivityButton2.setLayout(addActivityButton2Layout);
-        addActivityButton2Layout.setHorizontalGroup(
-            addActivityButton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout deleteActivityButtonLayout = new javax.swing.GroupLayout(deleteActivityButton);
+        deleteActivityButton.setLayout(deleteActivityButtonLayout);
+        deleteActivityButtonLayout.setHorizontalGroup(
+            deleteActivityButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(addActivityButton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(addActivityButton2Layout.createSequentialGroup()
+            .addGroup(deleteActivityButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deleteActivityButtonLayout.createSequentialGroup()
                     .addGap(0, 27, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addGap(0, 28, Short.MAX_VALUE)))
         );
-        addActivityButton2Layout.setVerticalGroup(
-            addActivityButton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        deleteActivityButtonLayout.setVerticalGroup(
+            deleteActivityButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(addActivityButton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(addActivityButton2Layout.createSequentialGroup()
+            .addGroup(deleteActivityButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deleteActivityButtonLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -159,7 +161,7 @@ public class Modal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addActivityButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteActivityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addActivityButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
@@ -172,7 +174,7 @@ public class Modal extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(addActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addActivityButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(23, 23, 23))
@@ -234,12 +236,15 @@ public class Modal extends javax.swing.JFrame {
 
     private void addActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addActivityButtonMouseClicked
         
-
+        
     }//GEN-LAST:event_addActivityButtonMouseClicked
 
-    private void addActivityButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addActivityButton2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addActivityButton2MouseClicked
+    private void deleteActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteActivityButtonMouseClicked
+        this.dashboard.activityList.activities.remove(this.indexRow);
+        this.dashboard.deleteRow(this.indexRow);
+        this.dashboard.refreshNominal();
+        this.setVisible(false);
+    }//GEN-LAST:event_deleteActivityButtonMouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         this.setVisible(false);
@@ -280,11 +285,12 @@ public class Modal extends javax.swing.JFrame {
 //        });
 //    }
 
-    Activity activity;
+    Dashboard dashboard;
+    int indexRow;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addActivityButton;
     private javax.swing.JPanel addActivityButton1;
-    private javax.swing.JPanel addActivityButton2;
+    private javax.swing.JPanel deleteActivityButton;
     private javax.swing.JRadioButton incomeRadioButton;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputNominal;
