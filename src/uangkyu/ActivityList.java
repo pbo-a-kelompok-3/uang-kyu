@@ -20,6 +20,20 @@ public class ActivityList {
     System.out.println("Aktifitas " + activity.getDescription() + " berhasil ditambahkan");
     return this;
   }
+  
+  public int[] getTotalNominal() {
+      int totalIncome = 0;
+      int totalOutcome = 0;
+      
+      for(Activity activity : this.activities) {
+          if (activity.getType() == 1) totalIncome = totalIncome + activity.getNominal();
+          else totalOutcome = totalOutcome + activity.getNominal();
+      }
+      
+      int total[] = {totalOutcome, totalIncome};
+      
+      return total;
+  }
 
   public int getIndexFromId(int id) {
     if (this.activities.size() < 1)

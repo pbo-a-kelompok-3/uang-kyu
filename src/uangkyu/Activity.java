@@ -11,6 +11,10 @@ public class Activity {
   public String getTypeAsText() {
     return type == 1 ? "Pemasukan" : "Pengeluaran";
   }
+  
+  public static String convertTypeToText(int type) {
+    return type == 1 ? "Pemasukan" : "Pengeluaran";
+  }
 
   public Activity setId(int id) {
     this.id = id;
