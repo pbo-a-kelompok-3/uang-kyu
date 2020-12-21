@@ -17,6 +17,13 @@ public class Modal extends javax.swing.JFrame {
      */
     public Modal(int index, Dashboard dashboard) {
         initComponents();
+        
+        this.incomeRadioButton.setSelected(true);
+        this.incomeRadioButton.setActionCommand("1");
+        this.outcomeRadioButton.setActionCommand("0");
+        this.buttonGroup1.add(incomeRadioButton);
+        this.buttonGroup1.add(outcomeRadioButton);
+        
         this.inputName.setText(dashboard.activityList.activities.get(index).getDescription());
         this.inputNominal.setText(String.valueOf(dashboard.activityList.activities.get(index).getNominal()));
         this.dashboard = dashboard;
@@ -32,6 +39,7 @@ public class Modal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         inputName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -235,8 +243,21 @@ public class Modal extends javax.swing.JFrame {
     }//GEN-LAST:event_incomeRadioButtonActionPerformed
 
     private void addActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addActivityButtonMouseClicked
+        String name = this.inputName.getText();
+        int nominal = Integer.parseInt(this.inputNominal.getText());
+        int type = Integer.parseInt(this.buttonGroup1.getSelection().getActionCommand());
+
+        Activity activity = new Activity();
+        activity
+            .setNominal(nominal)
+            .setDescription(name)
+            .setType(type);
         
-        
+        Object data[] = {0, name, Activity.convertTypeToText(type), nominal};
+        this.dashboard.activityList.activities.set(this.indexRow, activity);
+        this.dashboard.updateRow(indexRow, data);
+        this.dashboard.refreshNominal();
+        this.setVisible(false);
     }//GEN-LAST:event_addActivityButtonMouseClicked
 
     private void deleteActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteActivityButtonMouseClicked
@@ -290,6 +311,7 @@ public class Modal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addActivityButton;
     private javax.swing.JPanel addActivityButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel deleteActivityButton;
     private javax.swing.JRadioButton incomeRadioButton;
     private javax.swing.JTextField inputName;

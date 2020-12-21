@@ -347,6 +347,12 @@ public class Dashboard extends javax.swing.JFrame {
         tableModel.removeRow(index);
     }
     
+    public void updateRow(int index, Object data[]) {
+        DefaultTableModel tableModel = (DefaultTableModel) this.activityTable.getModel();
+        tableModel.removeRow(index);
+        tableModel.insertRow(index, data);
+    }
+    
     public void refreshNominal() {
         this.incomeNominal.setText(String.valueOf(activityList.getTotalNominal()[1]));
         this.outcomeNominal.setText(String.valueOf(activityList.getTotalNominal()[0]));
