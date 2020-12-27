@@ -469,6 +469,7 @@ public class Dashboard extends javax.swing.JFrame {
         try {
             activity.insert();
             this.refreshTable();
+            this.resetForm();
         } catch (Exception err) {
             this.alert.showMessageDialog(null, err.getMessage());
         }
@@ -487,6 +488,12 @@ public class Dashboard extends javax.swing.JFrame {
         } catch(Exception err) {
             System.out.println(err.getMessage());
         }
+    }
+    
+    public void resetForm() {
+        this.inputDescription.setText("");
+        this.inputNominal.setText("");
+        this.inputDate.setDate(null);
     }
     
     /**
