@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Models;
+import java.sql.Connection;
+import java.sql.Statement;
+import Utils.Database;
 
 /**
  *
@@ -16,52 +19,74 @@ public class Activity {
     private int typeId;
     private int createdAt;
     private int updatedAt;
-
+    private String tableName = "activities";
+    
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public Activity setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Activity setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public float getNominal() {
         return nominal;
     }
 
-    public void setNominal(float nominal) {
+    public Activity setNominal(float nominal) {
         this.nominal = nominal;
+        return this;
+
     }
 
     public int getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(int typeId) {
+    public Activity setTypeId(int typeId) {
         this.typeId = typeId;
+        return this;
     }
 
     public int getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(int createdAt) {
+    public Activity setCreatedAt(int createdAt) {
         this.createdAt = createdAt;
+        return this;
     }
 
     public int getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(int updatedAt) {
+    public Activity setUpdatedAt(int updatedAt) {
         this.updatedAt = updatedAt;
+        return this;
+    }
+    
+    public void insert() throws Exception {
+        String query = String.format(
+            "INSERT INTO %s (type_id, description, nominal, created_at, updated_at) VALUES (%d, \"%s\", %f, %d, %d)", 
+            this.tableName, this.getTypeId(), this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt()
+        );
+        
+        try {
+            Statement statement = Database.ConfigDB().createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception err) {
+            throw err;
+        }
     }
 }
