@@ -103,4 +103,18 @@ public class Activity {
             throw err;
         }
     }
+    
+    public void update() throws Exception {
+        String query = String.format(
+            "UPDATE %s SET type_id = %d, description = \"%s\", nominal = %f, created_at = %d, updated_at = %d WHERE id = %d",
+            this.tableName, this.getTypeId(), this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt(), this.getId()
+        );
+        
+        try {
+            Statement statement = Database.ConfigDB().createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception err) {
+            throw err;
+        }
+    }
 }
