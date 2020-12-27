@@ -5,7 +5,9 @@
  */
 package views;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import Models.Activity;
+import Utils.Time;
 
 /**
  *
@@ -120,6 +122,11 @@ public class Dashboard extends javax.swing.JFrame {
         buttonToSetIncome.setBackground(new java.awt.Color(82, 128, 120));
         buttonToSetIncome.setForeground(new java.awt.Color(255, 255, 255));
         buttonToSetIncome.setPreferredSize(new java.awt.Dimension(265, 45));
+        buttonToSetIncome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonToSetIncomeMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -428,7 +435,29 @@ public class Dashboard extends javax.swing.JFrame {
     private void inputNominalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNominalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNominalActionPerformed
-
+    
+    private void buttonToSetIncomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetIncomeMouseClicked
+        try {
+            Float.parseFloat(this.inputNominal.getText());
+        } catch (Exception err) {
+            this.alert.showMessageDialog(null, "Silahkan input nominal dengan benar");
+        }
+        
+        try {
+            this.inputDate.getDate().getTime();
+        } catch (Exception err) {
+            this.alert.showMessageDialog(null, "Silahkan input tanggal dengan benar");
+        }
+        
+        Time time = new Time();
+        time.setDate(this.inputDate.getDate());
+        
+        String description = this.inputDescription.getText();
+        float nominal = Float.parseFloat(this.inputNominal.getText());
+        String createdAt = time.parseDatetime();
+        String updatedAt = time.parseDatetime();
+    }//GEN-LAST:event_buttonToSetIncomeMouseClicked
+    
     public void refreshTable() {
         Activity activity = new Activity();
         try {
@@ -478,7 +507,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
     }
-
+    private JOptionPane alert;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonToSetExpense;
     private javax.swing.JPanel buttonToSetIncome;
