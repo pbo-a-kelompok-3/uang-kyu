@@ -474,6 +474,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonToSetIncomeMouseClicked
     
     public void refreshTable() {
+        ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);
         Activity activity = new Activity();
         try {
             for(Activity item : activity.getAll()) {
