@@ -6,6 +6,8 @@
 package Models;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import Utils.Database;
 
 /**
@@ -116,5 +118,43 @@ public class Activity {
         } catch (Exception err) {
             throw err;
         }
+    }
+    
+    public ArrayList<Activity> getAll() throws Exception {
+        String query = String.format(
+            "SELECT * FROM %s",
+            this.tableName
+        );
+        
+        ArrayList<Activity> activities =  new ArrayList<Activity>();
+        
+        try {
+            Statement statement = Database.ConfigDB().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            while(result.next()) {
+                Activity activity = new Activity();
+                int id = result.getInt("id");
+                String description = result.getString("description");
+                int typeId = result.getInt("type_id");
+                float nominal = result.getFloat("nominal");
+                int createdAt = result.getInt("created_at");
+                int updatedAt = result.getInt("updated_at");
+                
+                activity
+                    .setId(id)
+                    .setDescription(description)
+                    .setTypeId(typeId)
+                    .setCreatedAt(createdAt)
+                    .setUpdatedAt(updatedAt)
+                    .setNominal(nominal);
+                
+                activities.add(activity);
+            }
+            
+        } catch (Exception err) {
+            throw err;
+        }
+        
+        return activities;
     }
 }
