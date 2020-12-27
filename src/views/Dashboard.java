@@ -351,14 +351,14 @@ public class Dashboard extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tanggal", "Deskripsi", "Jenis", "Nominal"
+                "id", "Tanggal", "Deskripsi", "Jenis", "Nominal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -375,6 +375,7 @@ public class Dashboard extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -480,7 +481,7 @@ public class Dashboard extends javax.swing.JFrame {
             for(Activity item : activity.getAll()) {
                 DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
                 tableModel.addRow(
-                    new Object[]{item.getUpdatedAt() , item.getDescription(), item.getTypeId(), item.getNominal()}
+                    new Object[]{item.getId(),item.getUpdatedAt() , item.getDescription(), item.getTypeId(), item.getNominal()}
                 );
             }
         } catch(Exception err) {
