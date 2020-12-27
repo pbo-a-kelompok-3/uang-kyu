@@ -489,16 +489,30 @@ public class Dashboard extends javax.swing.JFrame {
     public void refreshTable() {
         ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);
         Activity activity = new Activity();
+        
+        float totalIncome = 0;
+        float totalOutcome = 0;
+        float totalNominal = 0;
+        
         try {
             for(Activity item : activity.getAll()) {
                 DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
                 tableModel.addRow(
                     new Object[]{item.getId(),item.getUpdatedAt() , item.getDescription(), item.getNominal()}
                 );
+                
+                if(item.getNominal() > 0) totalIncome = totalIncome + item.getNominal();
+                else totalOutcome = totalOutcome + item.getNominal();
             }
+            totalNominal = totalIncome - totalOutcome;
         } catch(Exception err) {
             System.out.println(err.getMessage());
         }
+        
+        this.totalIncome.setText(String.valueOf(totalIncome));
+        this.totalOutcome.setText(String.valueOf(totalOutcome));
+        this.totalNominal.setText(String.valueOf(totalNominal));
+
     }
     
     public void resetForm() {
