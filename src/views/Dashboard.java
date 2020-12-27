@@ -456,6 +456,21 @@ public class Dashboard extends javax.swing.JFrame {
         float nominal = Float.parseFloat(this.inputNominal.getText());
         String createdAt = time.parseDatetime();
         String updatedAt = time.parseDatetime();
+        
+        Activity activity = new Activity();
+        activity
+            .setDescription(description)
+            .setNominal(nominal)
+            .setTypeId(1)
+            .setCreatedAt(createdAt)
+            .setUpdatedAt(updatedAt);
+        
+        try {
+            activity.insert();
+            this.refreshTable();
+        } catch (Exception err) {
+            this.alert.showMessageDialog(null, err.getMessage());
+        }
     }//GEN-LAST:event_buttonToSetIncomeMouseClicked
     
     public void refreshTable() {
