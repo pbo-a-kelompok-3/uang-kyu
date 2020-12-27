@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package views;
+import javax.swing.table.DefaultTableModel;
+import Models.Activity;
 
 /**
  *
@@ -16,6 +18,7 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        this.refreshTable();
     }
 
     /**
@@ -426,6 +429,20 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNominalActionPerformed
 
+    public void refreshTable() {
+        Activity activity = new Activity();
+        try {
+            for(Activity item : activity.getAll()) {
+                DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
+                tableModel.addRow(
+                    new Object[]{item.getUpdatedAt() , item.getDescription(), item.getTypeId(), item.getNominal()}
+                );
+            }
+        } catch(Exception err) {
+            System.out.println(err.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
