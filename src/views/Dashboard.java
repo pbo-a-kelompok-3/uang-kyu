@@ -356,14 +356,14 @@ public class Dashboard extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "Tanggal", "Deskripsi", "Jenis", "Nominal"
+                "id", "Tanggal", "Deskripsi", "Nominal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -380,7 +380,6 @@ public class Dashboard extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -447,7 +446,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonToSetIncomeMouseClicked
 
     private void buttonToSetExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetExpenseMouseClicked
-        this.insertData(0);
+        this.insertData(-1);
     }//GEN-LAST:event_buttonToSetExpenseMouseClicked
     
     public void insertData(int type) {
@@ -474,8 +473,7 @@ public class Dashboard extends javax.swing.JFrame {
         Activity activity = new Activity();
         activity
             .setDescription(description)
-            .setNominal(nominal)
-            .setTypeId(1)
+            .setNominal(type * nominal)
             .setCreatedAt(createdAt)
             .setUpdatedAt(updatedAt);
         
@@ -495,7 +493,7 @@ public class Dashboard extends javax.swing.JFrame {
             for(Activity item : activity.getAll()) {
                 DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
                 tableModel.addRow(
-                    new Object[]{item.getId(),item.getUpdatedAt() , item.getDescription(), item.getTypeId(), item.getNominal()}
+                    new Object[]{item.getId(),item.getUpdatedAt() , item.getDescription(), item.getNominal()}
                 );
             }
         } catch(Exception err) {

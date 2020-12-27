@@ -18,7 +18,6 @@ public class Activity {
     private int id;
     private String description;
     private float nominal;
-    private int typeId;
     private String createdAt;
     private String updatedAt;
     private String tableName = "activities";
@@ -48,16 +47,6 @@ public class Activity {
     public Activity setNominal(float nominal) {
         this.nominal = nominal;
         return this;
-
-    }
-
-    public int getTypeId() {
-        return typeId;
-    }
-
-    public Activity setTypeId(int typeId) {
-        this.typeId = typeId;
-        return this;
     }
 
     public String getCreatedAt() {
@@ -80,8 +69,8 @@ public class Activity {
     
     public void insert() throws Exception {
         String query = String.format(
-            "INSERT INTO %s (type_id, description, nominal, created_at, updated_at) VALUES (%d, \"%s\", %f, \"%s\", \"%s\")", 
-            this.tableName, this.getTypeId(), this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt()
+            "INSERT INTO %s (description, nominal, created_at, updated_at) VALUES (\"%s\", %f, \"%s\", \"%s\")", 
+            this.tableName, this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt()
         );
         
         try {
@@ -108,8 +97,8 @@ public class Activity {
     
     public void update() throws Exception {
         String query = String.format(
-            "UPDATE %s SET type_id = %d, description = \"%s\", nominal = %f, created_at = \"%s\", updated_at = \"%s\" WHERE id = %d",
-            this.tableName, this.getTypeId(), this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt(), this.getId()
+            "UPDATE %s SET description = \"%s\", nominal = %f, created_at = \"%s\", updated_at = \"%s\" WHERE id = %d",
+            this.tableName, this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt(), this.getId()
         );
         
         try {
@@ -135,7 +124,6 @@ public class Activity {
                 Activity activity = new Activity();
                 int id = result.getInt("id");
                 String description = result.getString("description");
-                int typeId = result.getInt("type_id");
                 float nominal = result.getFloat("nominal");
                 String createdAt = result.getString("created_at");
                 String updatedAt = result.getString("updated_at");
@@ -143,7 +131,6 @@ public class Activity {
                 activity
                     .setId(id)
                     .setDescription(description)
-                    .setTypeId(typeId)
                     .setCreatedAt(createdAt)
                     .setUpdatedAt(updatedAt)
                     .setNominal(nominal);
