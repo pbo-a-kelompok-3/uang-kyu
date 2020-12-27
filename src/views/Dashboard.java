@@ -155,6 +155,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         buttonToSetExpense.setBackground(new java.awt.Color(240, 84, 84));
         buttonToSetExpense.setPreferredSize(new java.awt.Dimension(265, 45));
+        buttonToSetExpense.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonToSetExpenseMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -438,6 +443,14 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNominalActionPerformed
     
     private void buttonToSetIncomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetIncomeMouseClicked
+        this.insertData(1);
+    }//GEN-LAST:event_buttonToSetIncomeMouseClicked
+
+    private void buttonToSetExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetExpenseMouseClicked
+        this.insertData(0);
+    }//GEN-LAST:event_buttonToSetExpenseMouseClicked
+    
+    public void insertData(int type) {
         try {
             Float.parseFloat(this.inputNominal.getText());
         } catch (Exception err) {
@@ -473,7 +486,7 @@ public class Dashboard extends javax.swing.JFrame {
         } catch (Exception err) {
             this.alert.showMessageDialog(null, err.getMessage());
         }
-    }//GEN-LAST:event_buttonToSetIncomeMouseClicked
+    }
     
     public void refreshTable() {
         ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);

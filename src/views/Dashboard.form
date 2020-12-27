@@ -327,6 +327,9 @@
                   <Dimension value="[265, 45]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonToSetExpenseMouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
