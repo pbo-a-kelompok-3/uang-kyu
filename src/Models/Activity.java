@@ -19,8 +19,8 @@ public class Activity {
     private String description;
     private float nominal;
     private int typeId;
-    private int createdAt;
-    private int updatedAt;
+    private String createdAt;
+    private String updatedAt;
     private String tableName = "activities";
     
     public int getId() {
@@ -60,27 +60,27 @@ public class Activity {
         return this;
     }
 
-    public int getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public Activity setCreatedAt(int createdAt) {
+    public Activity setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public int getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public Activity setUpdatedAt(int updatedAt) {
+    public Activity setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
     
     public void insert() throws Exception {
         String query = String.format(
-            "INSERT INTO %s (type_id, description, nominal, created_at, updated_at) VALUES (%d, \"%s\", %f, %d, %d)", 
+            "INSERT INTO %s (type_id, description, nominal, created_at, updated_at) VALUES (%d, \"%s\", %f, \"%s\", \"%s\")", 
             this.tableName, this.getTypeId(), this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt()
         );
         
@@ -108,7 +108,7 @@ public class Activity {
     
     public void update() throws Exception {
         String query = String.format(
-            "UPDATE %s SET type_id = %d, description = \"%s\", nominal = %f, created_at = %d, updated_at = %d WHERE id = %d",
+            "UPDATE %s SET type_id = %d, description = \"%s\", nominal = %f, created_at = \"%s\", updated_at = \"%s\" WHERE id = %d",
             this.tableName, this.getTypeId(), this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt(), this.getId()
         );
         
@@ -137,8 +137,8 @@ public class Activity {
                 String description = result.getString("description");
                 int typeId = result.getInt("type_id");
                 float nominal = result.getFloat("nominal");
-                int createdAt = result.getInt("created_at");
-                int updatedAt = result.getInt("updated_at");
+                String createdAt = result.getString("created_at");
+                String updatedAt = result.getString("updated_at");
                 
                 activity
                     .setId(id)
