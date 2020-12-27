@@ -89,4 +89,18 @@ public class Activity {
             throw err;
         }
     }
+    
+    public void delete() throws Exception {
+        String query = String.format(
+            "DELETE FROM %s WHERE id = %d",
+            this.tableName, this.getId()
+        );
+        
+        try {
+            Statement statement = Database.ConfigDB().createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception err) {
+            throw err;
+        }
+    }
 }
