@@ -122,7 +122,7 @@ public class Activity {
     
     public ArrayList<Activity> getAll() throws Exception {
         String query = String.format(
-            "SELECT * FROM %s",
+            "SELECT * FROM %s ORDER BY updated_at DESC",
             this.tableName
         );
         
