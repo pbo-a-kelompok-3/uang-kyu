@@ -6,6 +6,7 @@
 package views;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import java.awt.Color;
 import Models.Activity;
 import Utils.Time;
 
@@ -47,7 +48,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         totalNominal = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        totalNominalText = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -237,10 +238,10 @@ public class Dashboard extends javax.swing.JFrame {
         totalNominal.setForeground(new java.awt.Color(82, 128, 120));
         totalNominal.setText("2.000.000");
 
-        jLabel11.setBackground(new java.awt.Color(82, 128, 120));
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(82, 128, 120));
-        jLabel11.setText("Total");
+        totalNominalText.setBackground(new java.awt.Color(82, 128, 120));
+        totalNominalText.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        totalNominalText.setForeground(new java.awt.Color(82, 128, 120));
+        totalNominalText.setText("Total");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -248,7 +249,7 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel11)
+                .addComponent(totalNominalText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 511, Short.MAX_VALUE)
                 .addComponent(totalNominal)
                 .addGap(44, 44, 44))
@@ -259,7 +260,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalNominal)
-                    .addComponent(jLabel11))
+                    .addComponent(totalNominalText))
                 .addGap(37, 37, 37))
         );
 
@@ -528,7 +529,7 @@ public class Dashboard extends javax.swing.JFrame {
                 if(item.getNominal() > 0) totalIncome = totalIncome + item.getNominal();
                 else totalOutcome = totalOutcome + item.getNominal();
             }
-            totalNominal = totalIncome - totalOutcome;
+            totalNominal = totalIncome + totalOutcome;
         } catch(Exception err) {
             System.out.println(err.getMessage());
         }
@@ -536,7 +537,14 @@ public class Dashboard extends javax.swing.JFrame {
         this.totalIncome.setText(String.valueOf(totalIncome));
         this.totalOutcome.setText(String.valueOf(totalOutcome));
         this.totalNominal.setText(String.valueOf(totalNominal));
-
+        
+        if(totalNominal < 0) {
+            this.totalNominalText.setForeground(new Color(240,84,84));
+            this.totalNominal.setForeground(new Color(240,84,84));
+        } else {
+            this.totalNominalText.setForeground(new Color(82,128,120));
+            this.totalNominal.setForeground(new Color(82,128,120));
+        }
     }
     
     public void resetForm() {
@@ -588,7 +596,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField inputDescription;
     private javax.swing.JTextField inputNominal;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -607,6 +614,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel totalIncome;
     private javax.swing.JLabel totalNominal;
+    private javax.swing.JLabel totalNominalText;
     private javax.swing.JLabel totalOutcome;
     // End of variables declaration//GEN-END:variables
 }
