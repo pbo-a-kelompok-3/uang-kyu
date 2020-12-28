@@ -377,6 +377,11 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(32);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -451,6 +456,14 @@ public class Dashboard extends javax.swing.JFrame {
     private void buttonToSetExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetExpenseMouseClicked
         this.insertData(-1);
     }//GEN-LAST:event_buttonToSetExpenseMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int index = this.jTable1.getSelectedRow();
+        int id = Integer.parseInt(this.jTable1.getValueAt(index, 0).toString());
+        String updatedAt = this.jTable1.getValueAt(index, 1).toString();
+        String description = this.jTable1.getValueAt(index, 2).toString();
+        float nominal = Float.parseFloat(this.jTable1.getValueAt(index, 3).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
     
     public void insertData(int type) {
         try {
