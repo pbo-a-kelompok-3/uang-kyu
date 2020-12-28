@@ -105,6 +105,7 @@ public class Modal extends javax.swing.JFrame {
 
         buttonToSetIncome.setBackground(new java.awt.Color(82, 128, 120));
         buttonToSetIncome.setForeground(new java.awt.Color(255, 255, 255));
+        buttonToSetIncome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonToSetIncome.setPreferredSize(new java.awt.Dimension(265, 45));
         buttonToSetIncome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,6 +139,7 @@ public class Modal extends javax.swing.JFrame {
         );
 
         buttonToSetExpense.setBackground(new java.awt.Color(240, 84, 84));
+        buttonToSetExpense.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonToSetExpense.setPreferredSize(new java.awt.Dimension(265, 45));
         buttonToSetExpense.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
