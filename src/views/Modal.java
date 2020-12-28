@@ -35,7 +35,7 @@ public class Modal extends javax.swing.JFrame {
         }
         this.idHeader.setText("#" + String.valueOf(this.id));
         this.inputDescription.setText(this.description);
-        this.inputNominal.setText(String.valueOf(this.nominal));
+        this.inputNominal.setText(String.valueOf(Math.abs(this.nominal)));
     }
 
     public void updateData(String type) {
