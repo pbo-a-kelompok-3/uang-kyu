@@ -97,8 +97,8 @@ public class Activity {
     
     public void update() throws Exception {
         String query = String.format(
-            "UPDATE %s SET description = \"%s\", nominal = %f, created_at = \"%s\", updated_at = \"%s\" WHERE id = %d",
-            this.tableName, this.getDescription(), this.getNominal(), this.getCreatedAt(), this.getUpdatedAt(), this.getId()
+            "UPDATE %s SET description = \"%s\", nominal = %f, updated_at = \"%s\" WHERE id = %d",
+            this.tableName, this.getDescription(), this.getNominal(), this.getUpdatedAt(), this.getId()
         );
         
         try {
