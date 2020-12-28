@@ -8,6 +8,7 @@ import Models.Activity;
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
 import Utils.Time;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,42 @@ public class Modal extends javax.swing.JFrame {
         this.inputNominal.setText(String.valueOf(this.nominal));
     }
 
+    public void updateData(int type) {
+        try {
+            Float.parseFloat(this.inputNominal.getText());
+        } catch (Exception err) {
+            this.alert.showMessageDialog(null, "Silahkan input nominal dengan benar");
+        }
+        
+        try {
+            this.inputDate.getDate().getTime();
+        } catch (Exception err) {
+            this.alert.showMessageDialog(null, "Silahkan input tanggal dengan benar");
+        }
+        
+        Time time = new Time();
+        time.setDate(this.inputDate.getDate());
+        
+        String description = this.inputDescription.getText();
+        float nominal = Float.parseFloat(this.inputNominal.getText());
+        String updatedAt = time.parseDatetime();
+        
+        Activity activity = new Activity();
+        activity
+            .setId(this.id)
+            .setDescription(description)
+            .setNominal(type * nominal)
+            .setUpdatedAt(updatedAt);
+        
+        try {
+            activity.update();
+            this.dashboard.refreshTable();
+            this.dashboard.resetForm();
+        } catch (Exception err) {
+            this.alert.showMessageDialog(null, err.getMessage());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -260,11 +297,13 @@ public class Modal extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNominalActionPerformed
 
     private void buttonToSetIncomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetIncomeMouseClicked
-        
+        this.updateData(1);
+        this.setVisible(false);
     }//GEN-LAST:event_buttonToSetIncomeMouseClicked
 
     private void buttonToSetExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetExpenseMouseClicked
-        
+        this.updateData(-1);
+        this.setVisible(false);
     }//GEN-LAST:event_buttonToSetExpenseMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -347,7 +386,7 @@ public class Modal extends javax.swing.JFrame {
         this.updatedAt = updatedAt;
         return this;
     }
-    
+    private JOptionPane alert;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonToSetExpense;
     private javax.swing.JPanel buttonToSetIncome;
