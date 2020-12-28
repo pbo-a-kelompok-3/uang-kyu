@@ -109,6 +109,42 @@ public class Activity {
         }
     }
     
+    public ArrayList<Activity> getByInterval(String from, String to) throws Exception {
+        String query = String.format(
+            "SELECT * FROM %s WHERE updated_at >= \"%s\" AND updated_at <= \"%s\" ORDER BY updated_at DESC",
+            this.tableName, from, to
+        );
+        
+        ArrayList<Activity> activities =  new ArrayList<Activity>();
+        
+        try {
+            Statement statement = Database.ConfigDB().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            while(result.next()) {
+                Activity activity = new Activity();
+                int id = result.getInt("id");
+                String description = result.getString("description");
+                float nominal = result.getFloat("nominal");
+                String createdAt = result.getString("created_at");
+                String updatedAt = result.getString("updated_at");
+                
+                activity
+                    .setId(id)
+                    .setDescription(description)
+                    .setCreatedAt(createdAt)
+                    .setUpdatedAt(updatedAt)
+                    .setNominal(nominal);
+                
+                activities.add(activity);
+            }
+            
+        } catch (Exception err) {
+            throw err;
+        }
+        
+        return activities;
+    }
+    
     public ArrayList<Activity> getAll() throws Exception {
         String query = String.format(
             "SELECT * FROM %s ORDER BY updated_at DESC",

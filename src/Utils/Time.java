@@ -21,8 +21,9 @@ public class Time {
         return date;
     }
 
-    public void setDate(Date date) {
+    public Time setDate(Date date) {
         this.date = date;
+        return this;
     }
     
     public String getDatetimeNow() {

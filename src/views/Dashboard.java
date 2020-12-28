@@ -7,6 +7,7 @@ package views;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.util.ArrayList;
 import Models.Activity;
 import Utils.Time;
 
@@ -25,7 +26,6 @@ public class Dashboard extends javax.swing.JFrame {
         this.endIntervalDate.setDate(time.getDate());
         time.getDate().setDate(1);
         this.startIntervalDate.setDate(time.getDate());
-        this.refreshTable();
     }
 
     /**
@@ -400,6 +400,11 @@ public class Dashboard extends javax.swing.JFrame {
         }
 
         endIntervalDate.setPreferredSize(new java.awt.Dimension(265, 45));
+        endIntervalDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                endIntervalDatePropertyChange(evt);
+            }
+        });
 
         jLabel10.setBackground(new java.awt.Color(43, 43, 43));
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -407,6 +412,11 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel10.setText("Sampai");
 
         startIntervalDate.setPreferredSize(new java.awt.Dimension(265, 45));
+        startIntervalDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                startIntervalDatePropertyChange(evt);
+            }
+        });
 
         jLabel11.setBackground(new java.awt.Color(43, 43, 43));
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -516,6 +526,24 @@ public class Dashboard extends javax.swing.JFrame {
             .setNominal(nominal)
             .run();
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void startIntervalDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_startIntervalDatePropertyChange
+        try {
+            System.out.println(this.startIntervalDate.getDate().getDay());
+            this.refreshTable();
+        } catch (Exception err) {
+            
+        }
+    }//GEN-LAST:event_startIntervalDatePropertyChange
+
+    private void endIntervalDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_endIntervalDatePropertyChange
+        try {
+            System.out.println(this.endIntervalDate.getDate().getDay());
+            this.refreshTable();
+        } catch (Exception err) {
+            
+        }
+    }//GEN-LAST:event_endIntervalDatePropertyChange
     
     public void insertData(int type) {
         try {
@@ -558,12 +586,16 @@ public class Dashboard extends javax.swing.JFrame {
         ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);
         Activity activity = new Activity();
         
+        String startInterval = (new Time()).setDate(this.startIntervalDate.getDate()).parseDatetime();
+        String endInterval = (new Time()).setDate(this.endIntervalDate.getDate()).parseDatetime();
+        
         float totalIncome = 0;
         float totalOutcome = 0;
         float totalNominal = 0;
         
         try {
-            for(Activity item : activity.getAll()) {
+            ArrayList<Activity> activities = activity.getByInterval(startInterval, endInterval);
+            for(Activity item : activities) {
                 DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
                 tableModel.addRow(
                     new Object[]{item.getId(),item.getUpdatedAt() , item.getDescription(), item.getNominal()}
