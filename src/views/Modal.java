@@ -7,6 +7,7 @@ package views;
 import Models.Activity;
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
+import java.lang.Math;
 import Utils.Time;
 import javax.swing.JOptionPane;
 
@@ -37,7 +38,7 @@ public class Modal extends javax.swing.JFrame {
         this.inputNominal.setText(String.valueOf(this.nominal));
     }
 
-    public void updateData(int type) {
+    public void updateData(String type) {
         try {
             Float.parseFloat(this.inputNominal.getText());
         } catch (Exception err) {
@@ -57,11 +58,13 @@ public class Modal extends javax.swing.JFrame {
         float nominal = Float.parseFloat(this.inputNominal.getText());
         String updatedAt = time.parseDatetime();
         
+        nominal = type == "+" ? Math.abs(nominal) : -1 * Math.abs(nominal);
+        
         Activity activity = new Activity();
         activity
             .setId(this.id)
             .setDescription(description)
-            .setNominal(type * nominal)
+            .setNominal(nominal)
             .setUpdatedAt(updatedAt);
         
         try {
@@ -330,12 +333,12 @@ public class Modal extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNominalActionPerformed
 
     private void buttonToSetIncomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetIncomeMouseClicked
-        this.updateData(1);
+        this.updateData("+");
         this.setVisible(false);
     }//GEN-LAST:event_buttonToSetIncomeMouseClicked
 
     private void buttonToSetExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetExpenseMouseClicked
-        this.updateData(-1);
+        this.updateData("-");
         this.setVisible(false);
     }//GEN-LAST:event_buttonToSetExpenseMouseClicked
 
