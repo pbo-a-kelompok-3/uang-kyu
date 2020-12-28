@@ -463,6 +463,14 @@ public class Dashboard extends javax.swing.JFrame {
         String updatedAt = this.jTable1.getValueAt(index, 1).toString();
         String description = this.jTable1.getValueAt(index, 2).toString();
         float nominal = Float.parseFloat(this.jTable1.getValueAt(index, 3).toString());
+        
+        Modal modal = new Modal(this);
+        modal
+            .setDescription(description)
+            .setId(id)
+            .setUpdatedAt(updatedAt)
+            .setNominal(nominal)
+            .run();
     }//GEN-LAST:event_jTable1MouseClicked
     
     public void insertData(int type) {
