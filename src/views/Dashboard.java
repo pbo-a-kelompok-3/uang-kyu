@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.lang.Math;
 import Models.Activity;
 import Services.ActivityService;
 import Utils.Time;
@@ -505,11 +506,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNominalActionPerformed
     
     private void buttonToSetIncomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetIncomeMouseClicked
-        this.insertData(1);
+        this.insertData("+");
     }//GEN-LAST:event_buttonToSetIncomeMouseClicked
 
     private void buttonToSetExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToSetExpenseMouseClicked
-        this.insertData(-1);
+        this.insertData("-");
     }//GEN-LAST:event_buttonToSetExpenseMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -546,7 +547,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_endIntervalDatePropertyChange
     
-    public void insertData(int type) {
+    public void insertData(String type) {
         try {
             Float.parseFloat(this.inputNominal.getText());
         } catch (Exception err) {
@@ -563,14 +564,16 @@ public class Dashboard extends javax.swing.JFrame {
         time.setDate(this.inputDate.getDate());
         
         String description = this.inputDescription.getText();
-        float nominal = Float.parseFloat(this.inputNominal.getText());
+        float nominal = Math.abs(Float.parseFloat(this.inputNominal.getText()));
         String createdAt = time.parseDatetime();
         String updatedAt = time.parseDatetime();
+        
+        nominal = type == "+" ? nominal : -1 * nominal;
         
         Activity activity = new Activity();
         activity
             .setDescription(description)
-            .setNominal(type * nominal)
+            .setNominal(nominal)
             .setCreatedAt(createdAt)
             .setUpdatedAt(updatedAt);
             
