@@ -567,12 +567,14 @@ public class Dashboard extends javax.swing.JFrame {
         String createdAt = time.parseDatetime();
         String updatedAt = time.parseDatetime();
         
-        ActivityService activityService = new ActivityService();
-        activityService
+        Activity activity = new Activity();
+        activity
             .setDescription(description)
             .setNominal(type * nominal)
             .setCreatedAt(createdAt)
             .setUpdatedAt(updatedAt);
+            
+        ActivityService activityService = new ActivityService(activity);
         
         try {
             activityService.insert();

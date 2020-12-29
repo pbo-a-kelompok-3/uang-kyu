@@ -16,6 +16,16 @@ import java.util.ArrayList;
  * @author Alfian Andi Nugraha
  */
 public class ActivityService extends Activity {
+    public ActivityService() {}
+    
+    public ActivityService(Activity activity) {
+        this.setId(activity.getId());
+        this.setDescription(activity.getDescription());
+        this.setNominal(activity.getNominal());
+        this.setCreatedAt(activity.getCreatedAt());
+        this.setUpdatedAt(activity.getUpdatedAt());
+    }
+    
     public void insert() throws Exception {
         String query = String.format(
             "INSERT INTO %s (description, nominal, created_at, updated_at) VALUES (\"%s\", %f, \"%s\", \"%s\")", 
