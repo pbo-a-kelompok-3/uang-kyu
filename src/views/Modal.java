@@ -5,6 +5,7 @@
  */
 package views;
 import Models.Activity;
+import Services.ActivityService;
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
 import java.lang.Math;
@@ -60,15 +61,15 @@ public class Modal extends javax.swing.JFrame {
         
         nominal = type == "+" ? Math.abs(nominal) : -1 * Math.abs(nominal);
         
-        Activity activity = new Activity();
-        activity
+        ActivityService activityService = new ActivityService();
+        activityService
             .setId(this.id)
             .setDescription(description)
             .setNominal(nominal)
             .setUpdatedAt(updatedAt);
         
         try {
-            activity.update();
+            activityService.update();
             this.dashboard.refreshTable();
             this.dashboard.resetForm();
         } catch (Exception err) {
@@ -347,9 +348,9 @@ public class Modal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void buttonToDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonToDeleteMouseClicked
-        Activity activity = new Activity();
+        ActivityService activityService = new ActivityService();
         try {
-            activity.setId(this.id).delete();
+            activityService.setId(this.id).delete();
             this.setVisible(false);
             this.dashboard.refreshTable();
         }catch (Exception err) {
