@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.util.ArrayList;
 import Models.Activity;
+import Services.ActivityService;
 import Utils.Time;
 
 /**
@@ -566,15 +567,15 @@ public class Dashboard extends javax.swing.JFrame {
         String createdAt = time.parseDatetime();
         String updatedAt = time.parseDatetime();
         
-        Activity activity = new Activity();
-        activity
+        ActivityService activityService = new ActivityService();
+        activityService
             .setDescription(description)
             .setNominal(type * nominal)
             .setCreatedAt(createdAt)
             .setUpdatedAt(updatedAt);
         
         try {
-            activity.insert();
+            activityService.insert();
             this.refreshTable();
             this.resetForm();
         } catch (Exception err) {
