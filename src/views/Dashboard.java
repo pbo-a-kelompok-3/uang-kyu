@@ -585,7 +585,7 @@ public class Dashboard extends javax.swing.JFrame {
     
     public void refreshTable() {
         ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);
-        Activity activity = new Activity();
+        ActivityService activityService = new ActivityService();
         
         String startInterval = (new Time()).setDate(this.startIntervalDate.getDate()).parseDatetime();
         String endInterval = (new Time()).setDate(this.endIntervalDate.getDate()).parseDatetime();
@@ -595,7 +595,7 @@ public class Dashboard extends javax.swing.JFrame {
         float totalNominal = 0;
         
         try {
-            ArrayList<Activity> activities = activity.getByInterval(startInterval, endInterval);
+            ArrayList<Activity> activities = activityService.getByInterval(startInterval, endInterval);
             for(Activity item : activities) {
                 DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
                 tableModel.addRow(
