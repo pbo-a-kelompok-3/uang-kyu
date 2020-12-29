@@ -533,7 +533,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void startIntervalDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_startIntervalDatePropertyChange
         try {
             System.out.println(this.startIntervalDate.getDate().getDay());
-            this.refreshTable();
+            this.refreshUI();
         } catch (Exception err) {
             
         }
@@ -542,7 +542,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void endIntervalDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_endIntervalDatePropertyChange
         try {
             System.out.println(this.endIntervalDate.getDate().getDay());
-            this.refreshTable();
+            this.refreshUI();
         } catch (Exception err) {
             
         }
@@ -582,14 +582,14 @@ public class Dashboard extends javax.swing.JFrame {
         
         try {
             activityService.insert();
-            this.refreshTable();
+            this.refreshUI();
             this.resetForm();
         } catch (Exception err) {
             this.alert.showMessageDialog(null, err.getMessage());
         }
     }
     
-    public void refreshTable() {
+    public void refreshUI() {
         ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);
         ActivityService activityService = new ActivityService();
         

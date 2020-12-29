@@ -70,7 +70,7 @@ public class Modal extends javax.swing.JFrame {
         
         try {
             activityService.update();
-            this.dashboard.refreshTable();
+            this.dashboard.refreshUI();
             this.dashboard.resetForm();
         } catch (Exception err) {
             this.alert.showMessageDialog(null, err.getMessage());
@@ -354,7 +354,7 @@ public class Modal extends javax.swing.JFrame {
         try {
             activityService.delete();
             this.setVisible(false);
-            this.dashboard.refreshTable();
+            this.dashboard.refreshUI();
         }catch (Exception err) {
             this.alert.showMessageDialog(null, "gagal menghapus data");
         }
