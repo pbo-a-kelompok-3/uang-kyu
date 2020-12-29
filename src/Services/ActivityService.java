@@ -58,11 +58,8 @@ public class ActivityService extends Activity {
         }
     }
     
-    public ArrayList<Activity> getByInterval(String from, String to) throws Exception {
-        String query = String.format(
-            "SELECT * FROM %s WHERE updated_at >= \"%s\" AND updated_at <= \"%s\" ORDER BY updated_at DESC",
-            this.tableName, from, to
-        );
+    private ArrayList<Activity> get(String querySelect) throws Exception {
+        String query = querySelect;
         
         ArrayList<Activity> activities =  new ArrayList<Activity>();
         
@@ -94,6 +91,23 @@ public class ActivityService extends Activity {
         return activities;
     }
     
+    public ArrayList<Activity> getByInterval(String from, String to) throws Exception {
+        String query = String.format(
+            "SELECT * FROM %s WHERE updated_at >= \"%s\" AND updated_at <= \"%s\" ORDER BY updated_at DESC",
+            this.tableName, from, to
+        );
+        
+        ArrayList<Activity> activities =  new ArrayList<Activity>();
+        
+        try {
+            activities = this.get(query);
+        } catch (Exception err) {
+            throw err;
+        }
+        
+        return activities;
+    }
+    
     public ArrayList<Activity> getAll() throws Exception {
         String query = String.format(
             "SELECT * FROM %s ORDER BY updated_at DESC",
@@ -103,26 +117,7 @@ public class ActivityService extends Activity {
         ArrayList<Activity> activities =  new ArrayList<Activity>();
         
         try {
-            Statement statement = Database.ConfigDB().createStatement();
-            ResultSet result = statement.executeQuery(query);
-            while(result.next()) {
-                Activity activity = new Activity();
-                int id = result.getInt("id");
-                String description = result.getString("description");
-                float nominal = result.getFloat("nominal");
-                String createdAt = result.getString("created_at");
-                String updatedAt = result.getString("updated_at");
-                
-                activity
-                    .setId(id)
-                    .setDescription(description)
-                    .setCreatedAt(createdAt)
-                    .setUpdatedAt(updatedAt)
-                    .setNominal(nominal);
-                
-                activities.add(activity);
-            }
-            
+            activities = this.get(query);
         } catch (Exception err) {
             throw err;
         }
