@@ -26,6 +26,7 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         Time time = new Time();
         this.endIntervalDate.setDate(time.getDate());
+        this.inputDate.setDate(time.getDate());
         time.getDate().setDate(1);
         this.startIntervalDate.setDate(time.getDate());
     }
