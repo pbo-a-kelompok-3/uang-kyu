@@ -5,6 +5,7 @@
  */
 package views;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.lang.Math;
 import Models.Activity;
 import Services.ActivityService;
 import Utils.Time;
+import javax.swing.JLabel;
 
 /**
  *
@@ -589,8 +591,22 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }
     
+    public void centeringTableColumn() {
+        DefaultTableCellRenderer centerAlign = new DefaultTableCellRenderer();
+        centerAlign.setHorizontalAlignment(JLabel.CENTER);
+        for(int i = 0; i < 4; i++) {
+            this.jTable1.getColumnModel().getColumn(i).setCellRenderer(centerAlign);
+        }
+        
+        ((DefaultTableCellRenderer)this.jTable1.getTableHeader().getDefaultRenderer())
+                .setHorizontalAlignment(JLabel.CENTER);
+    }
+    
     public void refreshUI() {
         ((DefaultTableModel)this.jTable1.getModel()).setRowCount(0);
+        
+        this.centeringTableColumn();
+        
         ActivityService activityService = new ActivityService();
         
         String startInterval = (new Time()).setDate(this.startIntervalDate.getDate()).parseDatetime();
