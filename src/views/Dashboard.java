@@ -45,6 +45,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         inputDescription = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         inputNominal = new javax.swing.JTextField();
@@ -58,6 +59,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         totalNominal = new javax.swing.JLabel();
         totalNominalText = new javax.swing.JLabel();
+        currencyTotal = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -74,6 +76,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UangKyu - Aplikasi Pelacak Keuangan");
         setMinimumSize(new java.awt.Dimension(1096, 658));
         setResizable(false);
         setSize(new java.awt.Dimension(1096, 658));
@@ -87,15 +90,26 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(82, 128, 120));
         jPanel3.setPreferredSize(new java.awt.Dimension(347, 71));
 
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("UangKyu");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(jLabel12)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel12)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inputDescription.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -135,6 +149,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         buttonToSetIncome.setBackground(new java.awt.Color(82, 128, 120));
         buttonToSetIncome.setForeground(new java.awt.Color(255, 255, 255));
+        buttonToSetIncome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonToSetIncome.setPreferredSize(new java.awt.Dimension(265, 45));
         buttonToSetIncome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,6 +183,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         buttonToSetExpense.setBackground(new java.awt.Color(240, 84, 84));
+        buttonToSetExpense.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonToSetExpense.setPreferredSize(new java.awt.Dimension(265, 45));
         buttonToSetExpense.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -247,7 +263,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(749, 107));
 
         totalNominal.setBackground(new java.awt.Color(82, 128, 120));
-        totalNominal.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        totalNominal.setFont(new java.awt.Font("Roboto", 0, 48)); // NOI18N
         totalNominal.setForeground(new java.awt.Color(82, 128, 120));
         totalNominal.setText("2.000.000");
 
@@ -256,6 +272,10 @@ public class Dashboard extends javax.swing.JFrame {
         totalNominalText.setForeground(new java.awt.Color(82, 128, 120));
         totalNominalText.setText("Total");
 
+        currencyTotal.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        currencyTotal.setForeground(new java.awt.Color(82, 128, 120));
+        currencyTotal.setText("Rp");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -263,18 +283,25 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(totalNominalText)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 511, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+                .addComponent(currencyTotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(totalNominal)
-                .addGap(44, 44, 44))
+                .addGap(42, 42, 42))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totalNominal)
-                    .addComponent(totalNominalText))
-                .addGap(37, 37, 37))
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currencyTotal)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(totalNominalText)
+                            .addGap(43, 43, 43))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(totalNominal)
+                            .addGap(23, 23, 23)))))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -389,6 +416,7 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(32);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -639,9 +667,11 @@ public class Dashboard extends javax.swing.JFrame {
         if(totalNominal < 0) {
             this.totalNominalText.setForeground(new Color(240,84,84));
             this.totalNominal.setForeground(new Color(240,84,84));
+            this.currencyTotal.setForeground(new Color(240,84,84));
         } else {
             this.totalNominalText.setForeground(new Color(82,128,120));
             this.totalNominal.setForeground(new Color(82,128,120));
+            this.currencyTotal.setForeground(new Color(82,128,120));
         }
     }
     
@@ -690,6 +720,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonToSetExpense;
     private javax.swing.JPanel buttonToSetIncome;
+    private javax.swing.JLabel currencyTotal;
     private org.jdesktop.swingx.JXDatePicker endIntervalDate;
     private org.jdesktop.swingx.JXDatePicker inputDate;
     private javax.swing.JTextField inputDescription;
@@ -697,6 +728,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
